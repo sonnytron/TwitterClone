@@ -5,23 +5,23 @@ This is a CodePath Week 3 Project to Implement Twitter OAuth and REST API. The a
 
 ## User Stories
 
-* [ ] User can sign in to Twitter using OAuth login
-* [ ] User can view tweets from their home timeline
-* [ ] Tweets display username, name and body text for each tweet
-* [ ] Tweets display timestamp in relative time ("4m ago, 2h ago")
-* [ ] As user scrolls, more tweets are loaded using Twitter's API Get Request
-* [ ] User can compose a new tweet  
-* [ ] User can initiate a composition Tweet dialog by tapping action button
-* [ ] User can enter the post into Tweet dialog and hit send button
-* [ ] Upon successful post, the list of tweets is updated with the new tweet
+* [x] User can sign in to Twitter using OAuth login
+* [x] User can view tweets from their home timeline
+* [x] Tweets display username, name and body text for each tweet
+* [x] Tweets display timestamp in relative time ("4m ago, 2h ago")
+* [x] As user scrolls, more tweets are loaded using Twitter's API Get Request
+* [x] User can compose a new tweet  
+* [x] User can initiate a composition Tweet dialog by tapping action button
+* [x] User can enter the post into Tweet dialog and hit send button
+* [x] Upon successful post, the list of tweets is updated with the new tweet
 
 ## Optional Stories  
-* [ ] While composing a tweet, user can see how many characters are remaining out of 140
-* [ ] The compose activity is replaced with a DialogFragment modal overlay
-* [ ] Tweet objects are built using Parcelable library to allow them to be passed between activities
-* [ ] Implemented recycler view instead of standard ListView for better use of resources/memory
-* [ ] Moved compose button into floating action button instead of menu button
-* [ ] Floating action button has ic_circle_add from Android materials
+* [x] While composing a tweet, user can see how many characters are remaining out of 140
+* [x] The compose activity is replaced with a DialogFragment modal overlay
+* [x] Tweet objects are built using Parcelable library to allow them to be passed between activities
+* [x] Implemented recycler view instead of standard ListView for better use of resources/memory
+* [x] Moved compose button into floating action button instead of menu button
+* [x] Floating action button has ic_circle_add from Android materials
 
 ## Notes
 
