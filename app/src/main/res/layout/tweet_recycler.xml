@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <android.support.v7.widget.RecyclerView android:id="@+id/tweet_recycler_view"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/ic_add_circle"
+        android:id="@+id/compose_tweet_float"
+        android:layout_margin="2dp"
+        android:layout_gravity="bottom|right"
+        app:layout_anchor="@id/tweet_recycler_view"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.FloatingActionButton>
+</android.support.design.widget.CoordinatorLayout>
+

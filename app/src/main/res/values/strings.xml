@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Rest Client Template</string>
-    <string name="login_label">Log in</string>
-
+    <string name="app_name">Twitter Clone</string>
+    <string name="login_label">Connect to Twitter</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_timeline">Home TimeLine</string>
+    <string name="tv_username_detail">Username</string>
+    <string name="tv_body_detail">Body of Tweet</string>
+    <string name="tweet_reply_string">Reply</string>
+    <string name="tweet_compose_title">Compose Tweet</string>
+    <string name="tweet_tv_hint">Enter your tweet message...</string>
+    <string name="tweet_bt_submit">Submit</string>
+    <string name="tweet_char_limit">140 remaining</string>
+    <string name="time_stamp_text">Time since</string>
 </resources>

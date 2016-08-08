@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/fragment_tweet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/profile_container"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ivProfileDetail"
+            android:layout_width="64dp"
+            android:layout_height="64dp"/>
+        <TextView
+            android:id="@+id/tvUsernameDetail"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="@string/tv_username_detail"
+            android:layout_toRightOf="@+id/ivProfileDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvBodyDetail"
+        android:text="@string/tv_body_detail"
+        android:textSize="16dp"
+        android:layout_margin="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profile_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
