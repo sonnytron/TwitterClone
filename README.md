@@ -1,7 +1,7 @@
 # TwitterClone
 This is a CodePath Week 3 Project to Implement Twitter OAuth and REST API. The application makes use of Twitter's Rest API. 
 
-[Twitter Clone Gif](/TweetClone.gif "An animated image showing use.")
+![Twitter Clone Gif](/TweetClone.gif "An animated image showing use.")
 
 ## User Stories
 
