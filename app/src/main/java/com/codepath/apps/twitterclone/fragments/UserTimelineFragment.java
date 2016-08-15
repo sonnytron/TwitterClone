@@ -70,7 +70,6 @@ public class UserTimelineFragment extends TweetListFragment {
             mClient = TwitterApplication.getRestClient();
         }
 
-        Toast.makeText(getActivity(), String.valueOf(getSinceId()) + " is sinceId", Toast.LENGTH_SHORT).show();
         mClient.getMoreUserTweets(mScreenName ,getSinceId(), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

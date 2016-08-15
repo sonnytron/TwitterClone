@@ -109,7 +109,6 @@ public class TweetListFragment extends Fragment {
     }
 
     public void addAll(List<Tweet> tweets) {
-        Toast.makeText(getActivity(), String.valueOf(tweets.size()) + " TWEETS GOTTEN", Toast.LENGTH_SHORT).show();
         if (mAdapter == null) {
             mAdapter = new TweetAdapter(tweets);
             mRecyclerView.setAdapter(mAdapter);

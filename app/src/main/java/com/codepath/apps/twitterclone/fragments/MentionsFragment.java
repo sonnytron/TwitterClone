@@ -59,7 +59,6 @@ public class MentionsFragment extends TweetListFragment {
             mClient = TwitterApplication.getRestClient();
         }
 
-        Toast.makeText(getActivity(), String.valueOf(getSinceId()) + " is sinceId", Toast.LENGTH_SHORT).show();
         mClient.getMentionsTimeline(getSinceId(), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
