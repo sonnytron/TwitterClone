@@ -3,6 +3,7 @@ package com.codepath.apps.twitterclone;
 import org.scribe.builder.api.Api;
 import org.scribe.builder.api.FlickrApi;
 import org.scribe.builder.api.TwitterApi;
+import org.scribe.model.Request;
 
 import android.content.Context;
 import android.util.Log;
@@ -76,6 +77,54 @@ public class TwitterClient extends OAuthBaseClient {
 		params.put("status", post.getStatus());
 
 		getClient().post(getApiUrl(REST_POST_TWEET_URL), params, handler);
+	}
+
+	public void getMentionsTimeline(long fromId, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("/statuses/mentions_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		if (fromId != 0) {
+			params.put("max_id", fromId);
+		}
+		params.put("since_id", 1);
+
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getUserTimeline(String screenName, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("/statuses/user_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		if (screenName != null) {
+			params.put("screen_name", screenName);
+		}
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getMoreUserTweets(String screenName, long sinceId, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("/statuses/user_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("count", 25);
+		if (screenName != null) {
+			params.put("screen_name", screenName);
+		}
+		if (sinceId != 0 && sinceId != -1) {
+			params.put("max_id", sinceId);
+		}
+		params.put("since_id", 1);
+		getClient().get(apiUrl, params, handler);
+	}
+
+	public void getUserInfo(AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("/account/verify_credentials.json");
+		getClient().get(apiUrl, null, handler);
+	}
+
+	public void getOtherUserInfo(String username, AsyncHttpResponseHandler handler) {
+		String apiUrl = getApiUrl("/users/lookup.json");
+		RequestParams params = new RequestParams();
+		params.put("screen_name", username);
+		getClient().get(apiUrl, params, handler);
 	}
 
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint

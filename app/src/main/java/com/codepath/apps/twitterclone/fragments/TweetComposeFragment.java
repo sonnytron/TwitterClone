@@ -1,4 +1,4 @@
-package com.codepath.apps.twitterclone;
+package com.codepath.apps.twitterclone.fragments;
 
 import android.support.v4.app.DialogFragment;
 

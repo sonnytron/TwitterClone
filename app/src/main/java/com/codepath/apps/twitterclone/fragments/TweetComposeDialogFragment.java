@@ -1,4 +1,4 @@
-package com.codepath.apps.twitterclone;
+package com.codepath.apps.twitterclone.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,14 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.codepath.apps.twitterclone.R;
 import com.codepath.apps.twitterclone.models.TweetPost;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by sonnyrodriguez on 8/7/16.

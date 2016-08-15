@@ -3,9 +3,9 @@ package com.codepath.apps.twitterclone;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.codepath.apps.twitterclone.fragments.SingleFragmentActivity;
 import com.codepath.apps.twitterclone.models.Tweet;
 
 public class TweetDetailActivity extends SingleFragmentActivity {

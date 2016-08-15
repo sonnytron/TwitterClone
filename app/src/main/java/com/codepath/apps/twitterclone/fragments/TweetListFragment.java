@@ -1,4 +1,4 @@
-package com.codepath.apps.twitterclone;
+package com.codepath.apps.twitterclone.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codepath.apps.twitterclone.R;
+import com.codepath.apps.twitterclone.TwitterApplication;
+import com.codepath.apps.twitterclone.TwitterClient;
 import com.codepath.apps.twitterclone.models.EndlessScrollListener;
 import com.codepath.apps.twitterclone.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -39,7 +42,6 @@ public class TweetListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private TweetCallback mCallback;
     private TweetAdapter mAdapter;
-    private TwitterClient mClient;
     private ArrayList<Tweet> mTweets;
     private long lastTweetId = 0;
 
@@ -59,13 +61,19 @@ public class TweetListFragment extends Fragment {
         mRecyclerView.addOnScrollListener(new EndlessScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                loadMoreTweetsFromId(page);
+                loadMore(page);
             }
         });
 
-        mClient = TwitterApplication.getRestClient();
+        mComposeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallback.onTweetCompose();
+                onPause();
+            }
+        });
+
         mTweets = new ArrayList<>();
-        populateTimeLine();
         return view;
     }
 
@@ -84,20 +92,6 @@ public class TweetListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (mClient == null) {
-            mClient = TwitterApplication.getRestClient();
-        }
-
-        mClient.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                mTweets.clear();
-                mTweets.addAll(Tweet.fromJsonArray(response));
-                Tweet lastTweet = mTweets.get(mTweets.size() - 1);
-                lastTweetId = lastTweet.getId();
-                updateFragmentWithTweets(mTweets);
-            }
-        });
     }
 
     public void updateFragmentWithTweets(List<Tweet> tweets) {
@@ -110,47 +104,27 @@ public class TweetListFragment extends Fragment {
         }
     }
 
-    private void populateTimeLine() {
+    public void loadMore(int pageId) {
 
-        mComposeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCallback.onTweetCompose();
-                onPause();
-            }
-        });
-
-        mClient.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                if (response != null) {
-                    mTweets.addAll(Tweet.fromJsonArray(response));
-                    Tweet lastTweet = mTweets.get(mTweets.size() - 1);
-                    lastTweetId = lastTweet.getId() - 1;
-                    updateFragmentWithTweets(mTweets);
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Toast.makeText(getContext(), "Failed Tweets!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    public void loadMoreTweetsFromId(int id) {
-        if (mClient == null) {
-            mClient = TwitterApplication.getRestClient();
+    public void addAll(List<Tweet> tweets) {
+        Toast.makeText(getActivity(), String.valueOf(tweets.size()) + " TWEETS GOTTEN", Toast.LENGTH_SHORT).show();
+        if (mAdapter == null) {
+            mAdapter = new TweetAdapter(tweets);
+            mRecyclerView.setAdapter(mAdapter);
         }
-        mClient.getMoreTweets(lastTweetId, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                mTweets.addAll(Tweet.fromJsonArray(response));
-                Tweet lastTweet = mTweets.get(mTweets.size() - 1);
-                lastTweetId = lastTweet.getId() - 1;
-                mAdapter.notifyDataSetChanged();
-            }
-        });
+        mRecyclerView.setAdapter(mAdapter);
+        mTweets.addAll(tweets);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void setSinceId(Long id) {
+        lastTweetId = id;
+    }
+
+    public long getSinceId() {
+        return lastTweetId;
     }
 
     private class TweetHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

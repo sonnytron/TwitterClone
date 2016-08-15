@@ -1,9 +1,11 @@
-package com.codepath.apps.twitterclone;
+package com.codepath.apps.twitterclone.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.codepath.apps.twitterclone.R;
 
 /**
  * Created by sonnyrodriguez on 8/6/16.
